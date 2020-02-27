@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# there are specific OS-level  variables that you can use
+# to access command line arguments and other stuff.
+
+echo These are your command line arguments $@
+echo This is the name of your script: $0
+echo This is your first argument: $1
+echo This is your second argument: $2
+echo This is your third argument: $3
+echo This is your fourth argument: $4
+# ...and so on.
+
+
+echo  # -------------------------------
+
+
+# the $? command returns the most recent exit code, it
+# can be used to see if a command succeeded or failed.
+# an exit code of 0 means that the command succeded,
+# any other code indicates a specific failure.
+
+echo -n       # this command should succeed.
+echo this is a successful exit code: $?
+
+crap 2> nul   # this command should fail.
+echo this is an unsuccessful exit code: $?

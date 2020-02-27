@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+
+# Bash can iterate through a list of strings with space separators.
+VALS="one two three four five"
+
+# a simple For loop iterates with space separators.
+for ITEM in $VALS
+do
+
+  echo "value: $ITEM"
+
+done
+
+# or simply, written with onle fewer line.
+for ITEM in $VALS; do
+
+  echo "value: $ITEM"
+
+done
+
+
+echo  # -------------------------------
+
+
+# A format Array objects.
+VALS=( 'five' 'four' 'three' 'two' 'one' )
+
+# A For loop that iterates through a formal array.
+# Note the [@] referend in ITEMS, this is represents
+# *every* entry in the array, much like $@ represents
+# the entirety of the command line arguments.
+for ITEM in "${VALS[@]}"; do
+
+  echo "value: $ITEM"
+
+done
+
+
+echo  # -------------------------------
+
+
+# Note that the numerical range is inline to the command.
+# this is a requirement, the range cannot be placed in
+# a variable. The range, however, can go in any direction;
+# asecending or decescending as necessary.
+for ITEM in {5..1}; do
+
+  echo "count: $ITEM"
+
+done
+
+
+echo  # -------------------------------
+
+
+# A for loop that resembles a conditional For loop
+# such as those used in C, Java, or JavaScript.
+# The value contained in LIMIT can be either inline
+# or it can be placed into a variable. Of course,
+# this type of loop can also be ascending or
+# descending. Also note that spaces are allowed
+# within the variables and conditionals.
+LIMIT=5
+for (( IDX = 1; IDX <= $LIMIT; IDX++ )); do
+
+  echo "count: $IDX"
+
+done

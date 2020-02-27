@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+
+# STDOUT stands for Standard Output. It is a stream where general output
+# like the regular output of any command goes to. It is, by default,
+# routed to the screen so things like printf output to the screen.
+# in this example, the output goes to a file.
+
+# to route STDOUT to a file, you can do:
+echo "this is standard output" > stdout.txt
+
+echo "the contents of STDOUT were: $( cat ./stdout.txt )"
+rm ./stdout.txt
+
+# This also works. The 1 is the default, STDOUT.
+echo "this is also standard output" 1> stdout.txt
+
+echo "the contents of STDOUT were: $( cat ./stdout.txt )"
+rm ./stdout.txt
+
+
+echo  # -------------------------------
+
+
+# STDERR stands for Standard Error. It is a stream where
+# error output is piped to. This is, by default, also output
+# to the screen but is often rerouted for logging reasons.
+# in this example, the output goes to a file.
+
+# to route STDERR to a file, you can do:
+crap 2> stderr.txt  # the 2 is required for STDOUT.
+
+echo "the contents of STDERR were: $( cat ./stderr.txt )"
+rm ./stderr.txt
+
+
+echo  # -------------------------------
+
+
+# Both STDOUT and STDERR can be output to the same file.
+# The parenthesis around the commands run them together,
+# witholding output until everything within completes.
+( echo -n "    crap!    "; crap ) &> both.txt
+
+echo "the contents of STDOUT and STDERR were: $( cat ./both.txt )"
+rm ./both.txt
+
+
+echo  # -------------------------------
+
+
+# a single > for the redirect clears the contents of the
+# output file prior to writing to it. A double > allows
+# the output to accumulates in the output file,
+echo -e "\n    this is a double '>' to standard output" >> stdout.txt
+echo "    this is another double '>' to standard output" >> stdout.txt
+
+echo "the contents of STDOUT were: $( cat ./stdout.txt )"
+rm ./stdout.txt
+
+
+echo  # -------------------------------
+
+
+# both STDOUT and STDERR can be redirected to separate files.
+( echo -n "    crap!    "; crap ) 1> stdout.txt 2> stderr.txt
+
+echo "the contents of STDOUT were: $( cat ./stdout.txt )"
+echo "the contents of STDERR were: $( cat ./stderr.txt )"
+rm ./stdout.txt
+rm ./stderr.txt
+
+
+echo  # -------------------------------
+
+
+# to throw away the output altogether, redirect it to '/dev/null',
+# another stream that throws away anything directed to it.
+echo "crap" 1> /dev/null    # this STDOUT output should go nowhere
+crap 2> /dev/null           # this STDERR output should go nowhere.
+
+( echo -n "    crap!    "; crap ) &> /dev/null  # all output should go nowhere.
+
+( echo -n "    crap!    "; crap ) 1> /dev/null 2> stderr.txt  # STDOUT output goes nowhere, but STDERR goes to a file.
+
+( echo -n "    crap!    "; crap ) 1> stdout.txt 2> /dev/null  # STDOUT goes to a file but STDERR goes nowhere.
+
+echo "the contents of STDOUT were: $( cat ./stdout.txt )"
+echo "the contents of STDERR were: $( cat ./stderr.txt )"
+rm ./stdout.txt
+rm ./stderr.txt
+
+
+echo  # -------------------------------
+
+
+# commands can be strung together using a pipe, '|'. it'll send the
+# output from one command to the next one and so on. 'cat' outputs
+# a file's contents, just like a DOS Prompt's type command. When
+# no arguments are provided to it, it prints out whatever is piped
+# to it (technically referred to as STDIN, Standard Input).
+echo "some output" | cat | cat | cat | cat | cat | cat | cat

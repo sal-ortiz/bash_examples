@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+
+VAR="variable"
+
+# In each of the statements below, note the space between
+# the 'if' and the '[' as well as the space before the ']'
+# this spacing is REQUIRED!
+
+# verify that $VAR equals 'variable'
+if [ $VAR == "variable" ]
+then
+
+  echo "You should see this text!"
+
+fi
+
+# this is the same IF statement.
+# The comma after the ']' is usee to separate the conditional from
+# the 'then' keyword, which is ecpected to be on a different line.
+if [ $VAR == "variable" ]; then
+
+  echo "You should see this text!"
+
+fi
+
+
+# -------------------------------------
+
+
+# an ELSE statement can be added as well.
+if [ $VAR == "variable" ]; then
+
+  echo "You should see this text!"
+
+else
+
+  echo "You should NOT see this text!"
+
+fi
+
+
+# -------------------------------------
+
+
+# inequality can be tested as such.
+if [ $VAR != "variable" ]; then
+
+  echo "You should NOT see this text!"
+
+else
+
+  echo "You should see this text!"
+
+fi
+
+
+# -------------------------------------
+
+
+# Special flags can also be used. For example,
+# this conditional tests that the given variable
+# is an empty string.
+if [ -z $VAR ]; then    # the -z stands for zero, as in zero content.
+
+  echo "You should NOT see this text!"
+
+else
+
+  echo "You should see this text!"
+
+fi
+
+# this conditional tests that the given variable
+# is a file and actually exists.
+if [ -e $VAR ]; then    # the -e stands for EXISTS..
+
+  echo "You should NOT see this text!"
+
+else
+
+  echo "You should see this text!"
+
+fi
+
+# this conditional tests that the given variable
+# is a directory and actually exists.
+if [ -d $VAR ]; then    # the -e stands for EXISTS..
+
+  echo "You should NOT see this text!"
+
+else
+
+  echo "You should see this text!"
+
+fi
+
+
+# -------------------------------------
+
+
+# this conditional tests that the given variable
+# is not an empty string.
+if [ ! -z $VAR ]; then    # the -z stands for zero, as in zero content.
+
+  echo "You should see this text!"
+
+else
+
+  echo "You should NOT see this text!"
+
+fi

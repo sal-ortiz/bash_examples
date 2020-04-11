@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-# Bash can iterate through a list of strings with space separators.
+# Bash can iterate through a list of strings with space or newline separators.
 VALS="one two three four five"
 
 # a simple For loop iterates with space separators.
@@ -12,7 +12,9 @@ do
 
 done
 
-# or simply, written with onle fewer line.
+# or simply, written with one fewer line, given that bash commands
+# can be written on a single line, seperated by a semicolon, rather
+# than one line at a time.
 for ITEM in $VALS; do
 
   echo "value: $ITEM"
@@ -23,13 +25,14 @@ done
 echo  # -------------------------------
 
 
-# A format Array objects.
+# A formal Array object would look like this.
 VALS=( 'five' 'four' 'three' 'two' 'one' )
 
-# A For loop that iterates through a formal array.
-# Note the [@] referend in ITEMS, this is represents
-# *every* entry in the array, much like $@ represents
-# the entirety of the command line arguments.
+# A For loop that iterates through a formal array. Note the [@] referend
+# in ITEMS, this is represents *every* entry in the array, much like $@
+# represents the entirety of the command line arguments. Also note that
+# there can be no spaces between the array variable and the curly braces
+# that surround it within the quotes.
 for ITEM in "${VALS[@]}"; do
 
   echo "value: $ITEM"
@@ -40,10 +43,12 @@ done
 echo  # -------------------------------
 
 
-# Note that the numerical range is inline to the command.
-# this is a requirement, the range cannot be placed in
-# a variable. The range, however, can go in any direction;
-# asecending or decescending as necessary.
+# A for loop can also be written with a given range of values and
+# increments. Note that the numerical range is inline to the command.
+# This is a requirement, the range cannot be placed in a variable.
+# The range, however, can go in any direction; asecending or decescending
+# as necessary. Also note that there can be no spaces between the range
+# value and the curly braces that surround it.
 for ITEM in {5..1}; do
 
   echo "count: $ITEM"
@@ -54,13 +59,12 @@ done
 echo  # -------------------------------
 
 
-# A for loop that resembles a conditional For loop
-# such as those used in C, Java, or JavaScript.
-# The value contained in LIMIT can be either inline
-# or it can be placed into a variable. Of course,
-# this type of loop can also be ascending or
-# descending. Also note that spaces are allowed
-# within the variables and conditionals.
+# A for loop that resembles a conditional For loop such as those used in
+# C, Java, or JavaScript. The value contained in LIMIT can be either
+# inline or it can be placed into a variable. Of course, this type of
+# loop can also be ascending or descending. Also note that only the
+# LIMIT variable requires the $ preceding it's name here. Also, spaces
+# are allowed within the variables and conditionals, for legibility.
 LIMIT=5
 for (( IDX = 1; IDX <= $LIMIT; IDX++ )); do
 

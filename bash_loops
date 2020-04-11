@@ -55,6 +55,44 @@ for ITEM in {5..1}; do
 
 done
 
+# or with an increment value other than 1. Note that because we're
+# counting backwards here, our increment value is a negative number.
+for ITEM in {10..1..-2}; do
+
+  echo "count: $ITEM"
+
+done
+
+
+# or with a variable for a start and end value.
+# Note that we're just calling the 'seq' bash command. It's output is
+# the equivalent of all of the values output one-by-one with a newline
+# in between each value. This is similar to the first example in this
+# example script but with newlines instead of spaces between each value
+# iterated over. Either a newline or a space can be used here with the
+# same end result.
+START=1
+END=10
+
+for ITEM in $( seq $START $END ); do
+
+  echo "count: $ITEM"
+
+done
+
+# or backwards, decremented by a value other than 1 at a time. Note that
+# the the 'seq' command has the increment value, if one is required,
+# between the start and end values. Also note that because we're counting
+# backwards, our increment is a negative number.
+START=10
+END=1
+INCREMENT=-2
+
+for ITEM in $( seq $START $INCREMENT $END ); do
+
+  echo "count: $ITEM"
+
+done
 
 echo  # -------------------------------
 

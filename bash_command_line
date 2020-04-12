@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# there are specific OS-level  variables that you can use
+# there are specific OS-level variables that you can use
 # to access command line arguments and other stuff.
 
 echo These are your command line arguments $@

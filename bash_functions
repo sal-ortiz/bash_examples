@@ -60,7 +60,10 @@ using_function_arguments one two three four five six seven eight nine ten
 # returning values often uses global variables but this is not always
 # good form so function output is returned via STDOUT, Standard Output.
 function_that_returns_a_value() {
-  echo "this string is discretely returned."
+
+  # Note that the "-n" flag causes echo to output without
+  # appending a newline at the end of the given string.
+  echo -n "this string is discretely returned."
 }
 
 # prints output to STDOUT

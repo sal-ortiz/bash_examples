@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
 
+# Functions are easily defined in a way similar to the way
+# they are declared in most other programming languages.
+# The functions are local to the context of the script in
+# which they are declared or from which they are executed.
 function an_empty_function() {
   ::  # you can't just leave it empty, use :: to fill it in..
 }
 
-# You can use one of multiple different
-# syntaxes to declare a Bash function...
+# You can use one of multiple different syntaxes to declare
+# functions within Bash scripts.
 function one_function() {
   GLOBAL_VAR="variable global to this script"
   local LOCAL_VAR="variable local to this function."
@@ -46,6 +50,10 @@ function_that_returns_a_value() {
 # prints output to STDOUT
 function_that_returns_a_value
 
-# saves output to $OUTPUT, then prints $OUTPUT.
+# saves output to OUTPUT variable, then prints it.
 OUTPUT=$( function_that_returns_a_value )
 echo $OUTPUT
+
+# Note that $( ... ) can be used to redirect output
+# from commands to a variable or what-have-you. spaces
+# can be added arbitrarily within the parentheses.

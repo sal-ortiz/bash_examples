@@ -23,3 +23,25 @@ echo the bash binary is located at $( which bash )  # same output as above.
 
 # you can even embed a command inside of another command.
 echo the bash binary is located at $( dirname $( which bash ) )
+
+
+echo  # -------------------------------
+
+
+# Mathematical calculations can be performed as well using
+# the $(( ... )) wrappers. Note that arbitrary spaces can be
+# added within the parentheses.
+NUMBER_TWO=$(( 1 + 1 ))                         # addition
+NUMBER_SIX=$(( $NUMBER_TWO * 3 ))               # multiplication
+NUMBER_THREE=$(( $NUMBER_SIX / 2 ))             # division
+NUMBER_FOUR=$(( $NUMBER_SIX - $NUMBER_TWO ))    # subtraction
+NUMBER_ONE=$(( $NUMBER_FOUR % $NUMBER_THREE ))  # modulo
+
+echo The Number Two: $NUMBER_TWO
+echo The Number Six: $NUMBER_SIX
+echo The Number Three: $NUMBER_THREE
+echo The Number Four: $NUMBER_FOUR
+echo The Number One: $NUMBER_ONE
+
+# Note that Bash cannot perform floating point calculations
+# natively. It is limited to only integer calculations.

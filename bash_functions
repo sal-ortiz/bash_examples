@@ -33,9 +33,25 @@ another_function
 using_function_arguments() {
   # function arguments are identical to script arguments.
   ARGS=$@
+
+  # ...or
+  ARG_ONE=$1
+  ARG_TWO=$2
+  ARG_THREE=$3
+  ARG_FOUR=$4
+
+  # Individual arguments can also be thrown out, moving
+  # each remaining argument up a single position in the list.
+  # This is accomplished using the 'shift' command.
+  shift
+
+  ARG_SIX=$5  # $5 contains what was previously in $6
 }
 
-using_function_arguments one two three
+# Note that because function declarations do not explicitly specificy
+# parameters with their declarations, arity is not enforced in
+# Bash functions and no exceptions are thrown as a result.
+using_function_arguments one two three four five six seven eight nine ten
 
 
 # -------------------------------------

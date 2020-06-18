@@ -115,3 +115,77 @@ else
   echo "You should NOT see this text!"
 
 fi
+
+
+# -------------------------------------
+
+
+# conditionals can also be expressed in the form
+# of 'case' statements, much like the switch-case
+# statements used in many programming languages.
+
+# note that each condition ends in ';;'. This is
+# the equivalent of a 'break' statement, as used
+# in other programming languages like C, Java, etc.
+
+case "$VAR" in
+
+  "var")
+    echo "You should NOT see this text!"
+    ;;
+
+  "value")
+    echo "You should NOT see this text!"
+    ;;
+
+  "variable")
+    echo "You should see this text!"
+    ;;
+
+esac
+
+# also, see that the quotes around each
+# string condition are optional.
+
+# additionally, a default catch-all condition can
+# be added for situations where none of the explict
+# conditions meet the expected conditions.
+
+case "$VAR" in
+
+  var)
+    echo "You should NOT see this text!"
+    ;;
+
+  value)
+    echo "You should NOT see this text!"
+    ;;
+
+  *)
+    echo "You should see this text!"
+    ;;
+
+esac
+
+# variables can also be used within the
+# conditional statements.
+case "variable" in
+
+  $VAR)
+    echo "You should see this text!"
+    ;;
+
+  *)
+    echo "You should NOT see this text!"
+    ;;
+
+esac
+
+# as with 'if' statements, blocks can be used
+# in cases where no operation is to be executed.
+case "$VAR" in
+
+  *)
+    :
+
+esac
